@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="icon" href="data:,">
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <script src="https://unpkg.com/mdebug@latest/dist/index.js"></script>
+      <script src="scevent.js"></script><script async="" src="scevent.js"></script><script>
+        (function(win, doc, sdk_url){
+          if(win.snaptr) return;
+          var tr=win.snaptr=function(){
+            tr.handleRequest? tr.handleRequest.apply(tr, arguments):tr.queue.push(arguments);
+          };
+          tr.queue = [];
+          var s='script';
+          var new_script_section=doc.createElement(s);
+          new_script_section.async=!0;
+          new_script_section.src=sdk_url;
+          var insert_pos=doc.getElementsByTagName(s)[0];
+          insert_pos.parentNode.insertBefore(new_script_section, insert_pos);
+        })(window, document, 'https://sc-static.net/scevent.min.js');
+        snaptr('init', '194e8c7a-0334-4401-8c48-4c2bd7029d83', {'user_email': "azam@gmail.com"});
+        snaptr('track', 'PAGE_VIEW', {
+          'description':'test-safari-crash'
+        });
+      </script>
+  </head>
+  <body>
+    <h1>Abnormal cases</h1>
+    <div>
+      <p><a href="index.html">Back to home page</a></p>
+    </div>
+    <script>
+        mdebug.init();
+    </script>
+  </body>
+</html>
+  

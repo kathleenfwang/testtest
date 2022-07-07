@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="icon" href="data:,">
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <script src="https://unpkg.com/mdebug@latest/dist/index.js"></script>
+      <script>
+        (function(win, doc, sdk_url){
+          if(win.snaptr) return;
+          var tr=win.snaptr=function(){
+            tr.handleRequest? tr.handleRequest.apply(tr, arguments):tr.queue.push(arguments);
+          };
+          tr.queue = [];
+          var s='script';
+          var new_script_section=doc.createElement(s);
+          new_script_section.async=!0;
+          new_script_section.src=sdk_url;
+          var insert_pos=doc.getElementsByTagName(s)[0];
+          insert_pos.parentNode.insertBefore(new_script_section, insert_pos);
+        })(window, document, 'https://sc-static.net/scevent.min.js');
+        snaptr('init', '194e8c7a-0334-4401-8c48-4c2bd7029d83', {'sync_modes': [100]});
+        snaptr('track', 'PAGE_VIEW', {
+          'description':'test-demo'
+        });
+      </script>
+  </head>
+  <body>
+      <h1>Product</h1>
+    <div>
+        <form class="cart" onsubmit="return false;" enctype="multipart/form-data">
+          <div class="quantity">
+            <label class="screen-reader-text" for="quantity">PRODUCT</label>
+                <input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" placeholder="" inputmode="numeric">
+          </div>
+        <button type="submit" name="add-to-cart" value="14">Add to cart</button>
+
+        </form>
+        <p><a href="cart.html">View cart</a></p>
+    </div>
+    <div>
+      <p><a href="index.html">Back to home page</a></p>
+    </div>
+    <script>
+      mdebug.init();
+    </script>
+    <script>
+        document.querySelector('form').addEventListener( 'submit', function(e) {
+            snaptr('track', 'ADD_CART', {
+              'currency': 'USD',
+                'price': '123',
+                'item_category': 'product_category',
+                'item_ids': ['14']
+            });
+        });
+    </script>
+    <script>
+      (function(win, doc, sdk_url){
+        if(win.snaptr) return;
+        var tr=win.snaptr=function(){
+          tr.handleRequest? tr.handleRequest.apply(tr, arguments):tr.queue.push(arguments);
+        };
+        tr.queue = [];
+        var s='script';
+        var new_script_section=doc.createElement(s);
+        new_script_section.async=!0;
+        new_script_section.src=sdk_url;
+        var insert_pos=doc.getElementsByTagName(s)[0];
+        insert_pos.parentNode.insertBefore(new_script_section, insert_pos);
+      })(window, document, 'scevent.js');
+      snaptr('init', '194e8c7a-0334-4401-8c48-4c2bd7029d83', {'sync_modes': [100]});
+      snaptr('track', 'VIEW_CONTENT', {
+            item_ids: [ '14' ]
+        });
+    </script>
+  </body>
+</html>
